@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fungus;
@@ -21,19 +20,30 @@ public class NPCController : MonoBehaviour
     }
     private  void OnCollisionEnter2D(UnityEngine.Collision2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" )
         {
             StartCoroutine(Talk());
         }
     }
+
+    private  void OnCollisionStay2D(UnityEngine.Collision2D stay)
+    {
+ 
+    }
+
+    void update ()
+    {
+
+    }
    
     IEnumerator Talk()
     {
+
         player.SetState(player.State.Talk);
 
         flowChart.SendFungusMessage(message);
         yield return new WaitUntil(() => flowChart.GetExecutingBlocks().Count == 0);
 
-        //player.SetState(player.State.Normal);
+        player.SetState(player.State.Normal);
     }
 }
