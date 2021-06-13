@@ -131,4 +131,11 @@ public class player : MonoBehaviour
         return state;
     }
 
+    public void stopPlayerMotion()
+    {
+        this.speed = 0;
+        this.stopf = 0;
+        anim.SetBool("walk",false);
+    }
+
 }
